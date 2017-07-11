@@ -1,5 +1,7 @@
 node('demo') {
 
+    @Library('kubernetes-jenkins-library@master')
+
 	stage('Checkout') {
 		git credentialsId: 'gogs-credential', url: 'https://gogs.cn133.azure.net/demo/demo-project.git'
 	}
