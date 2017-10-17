@@ -16,7 +16,7 @@ public class DemoController {
 
     Logger logger = LoggerFactory.getLogger(DemoController.class);
 
-    @RequestMapping("/")
+    @RequestMapping("/backend")
     public String index() {
         String ip = request.getRemoteAddr();
 

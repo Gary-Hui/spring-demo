@@ -71,7 +71,6 @@ node('demo') {
             servicePort = 80
             containerPort = 8080
         }
-
         def next = input message: 'Need rollback ?', ok: 'OK', parameters: [
             [$class: 'ChoiceParameterDefinition', choices: 'done\nrollback', description: '', name: 'continue or rollback?']
         ]
