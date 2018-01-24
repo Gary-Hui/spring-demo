@@ -13,15 +13,15 @@ pipeline {
                 }
         }
 
-    stage('Test') {
-            steps{
-                sh 'docker run  -i -v $(pwd):/data -w /data frekele/gradle:3.4.1-jdk8 sh -c \'gradle test --stacktrace\''
-                }
-        }
+//    stage('Test') {
+//            steps{
+//                sh 'docker run  -i -v $(pwd):/data -w /data frekele/gradle:3.4.1-jdk8 sh -c \'gradle test --stacktrace\''
+//                }
+//        }
 
     stage('Build') {
             steps{
-                sh 'docker run  -i -v $(pwd):/data -w /data frekele/gradle:3.4.1-jdk8 sh -c \'gradle build --stacktrace\''
+                sh 'docker run  -i -v /root/.gradle:/root/.gradle -v $(pwd):/data -w /data frekele/gradle:3.4.1-jdk8 sh -c \'gradle build --stacktrace\''
                 }
         }
 
