@@ -5,6 +5,7 @@ env.SCM_BRANCH         = "release"
 pipeline {
     agent any
 
+
     stages {
 
     stage('CHECKOUT') {
