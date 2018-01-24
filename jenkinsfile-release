@@ -29,7 +29,7 @@ pipeline {
         steps {
             
             withCredentials([string(credentialsId: '3da87b44-e73d-45da-b731-f273f1ec27f0', variable: 'PW1')]) {
-                sh "cf login -a api.run.pivotal.io -u 496960694@qq.com -p ${PW1} -o nyy -s Prod"
+                sh "cf login -a api.run.pivotal.io -u 496960694@qq.com -p ${PW1} -o nyy -s QA"
                 sh 'cf push -f ./manifest.yml'
             }
         }
