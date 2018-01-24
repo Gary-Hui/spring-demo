@@ -1,6 +1,6 @@
 ---
 applications:
-- name: backend-spa
+- name: backend-spa-qa
   memory: 1G
   disk_quota: 1G
   path: build/libs/demo-project-0.1.0.jar
