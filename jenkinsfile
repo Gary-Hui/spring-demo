@@ -1,0 +1,38 @@
+env.SCM_URL            = "https://github.com/Gary-Hui/spring-demo.git"
+env.SCM_CREDENTIALS    = "d2d7e797-c408-4020-b6fb-2450a4f96365"
+env.SCM_BRANCH         = "master"
+
+pipeline {
+    agent any
+
+    stages {
+
+    stage('CHECKOUT') {
+            steps{
+                 git url: "${env.SCM_URL}", credentialsId: "${env.SCM_CREDENTIALS}", branch: "${env.SCM_BRANCH}"
+                }
+        }
+
+//    stage('Test') {
+//            steps{
+//                sh 'docker run  -i -v $(pwd):/data -w /data frekele/gradle:3.4.1-jdk8 sh -c \'gradle test --stacktrace\''
+//                }
+//        }
+
+    stage('Build') {
+            steps{
+                sh 'docker run  -i -v /root/.gradle:/root/.gradle -v $(pwd):/data -w /data frekele/gradle:3.4.1-jdk8 sh -c \'gradle build --stacktrace\''
+                }
+        }
+
+    stage('Deploy') {
+        steps {
+            
+            withCredentials([string(credentialsId: '3da87b44-e73d-45da-b731-f273f1ec27f0', variable: 'PW1')]) {
+                sh "cf login -a api.run.pivotal.io -u 496960694@qq.com -p ${PW1} -o nyy -s development"
+                sh 'cf push -f ./manifest.yml'
+            }
+        }
+    }   
+    }
+}
