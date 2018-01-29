@@ -1,0 +1,15 @@
+pipelines:
+  yufei-app:
+    group: defaultGroup
+    materials:
+      damnopsgit:
+        git: https://github.com/damnops/homework.git
+    stages:
+      - test:
+          jobs:
+            unit-test:
+              tasks:
+                - exec:
+                    command: echo
+                    arguments:
+                      - "unit test passed!"
