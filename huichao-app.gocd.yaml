@@ -1,9 +1,9 @@
 pipelines:
-  yufei-app:
+  backend:
     group: defaultGroup
     materials:
       damnopsgit:
-        git: https://github.com/damnops/homework.git
+        git: https://github.com/Gary-Hui/spring-demo.git
     stages:
       - test:
           jobs:
